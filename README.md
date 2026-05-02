@@ -1,3 +1,5 @@
+web link;-http://localhost:5173/. 
+
 # Smart Resume Screening System
 
 An industry-level, full-stack AI-powered resume screening system. It ranks candidate resumes against a Job Description using BERT-based embeddings (SentenceTransformers) and features an interactive HR Chatbot to query the top candidates.
