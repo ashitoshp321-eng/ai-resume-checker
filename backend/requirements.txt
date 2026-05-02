@@ -1,0 +1,34 @@
+# Core
+fastapi
+uvicorn[standard]
+python-multipart
+python-dotenv
+
+# PDF Extraction
+pdfplumber
+pytesseract
+Pillow
+
+# AI / Embeddings
+sentence-transformers
+faiss-cpu
+torch
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# Database
+sqlalchemy[asyncio]
+aiosqlite
+asyncpg
+
+# Pydantic
+pydantic
+pydantic-settings
+
+# HTTP / OpenAI
+httpx
+openai
+
+# Testing
+pytest
+pytest-asyncio
+reportlab

@@ -1,0 +1,36 @@
+services:
+  # Managed PostgreSQL Database
+  - type: psql
+    name: resume-db
+    plan: free
+
+  # FastAPI Backend
+  - type: web
+    name: resume-backend
+    env: python
+    buildCommand: "cd backend && pip install -r requirements.txt"
+    startCommand: "cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: resume-db
+          property: connectionString
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: UPLOAD_DIR
+        value: "/tmp/uploads"
+
+  # React Frontend
+  - type: web
+    name: resume-frontend
+    env: node
+    buildCommand: "cd frontend && npm ci && npm run build"
+    startCommand: "npx serve -s frontend/dist -l $PORT"
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: resume-backend
+          property: host
+        # The URL needs to be constructed with /api
+        # Alternatively, define VITE_API_URL manually in Render dashboard
