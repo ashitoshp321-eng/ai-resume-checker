@@ -1,4 +1,4 @@
-web link:-http://localhost:5173/. 
+web link:-http://localhost:5173
 
 # Smart Resume Screening System
 
